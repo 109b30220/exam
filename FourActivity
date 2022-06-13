@@ -1,0 +1,30 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.location.Location;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+
+public class fourActivity extends AppCompatActivity {
+    private Location current;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_four);
+    }
+    public void button_PH(View view){
+        Intent i =new Intent(Intent.ACTION_DIAL);
+        i.setData(Uri.parse("tel+0912345678"));
+        startActivity(i);
+    }
+    public void button_AD(View view){
+        float latitude =(float) current.getLatitude();
+        float longitude=(float) current.getLongitude();
+        String uri = "https://reurl.cc/lo4lXA";
+        Intent geoMap=new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(geoMap);
+    }
+}
